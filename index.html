@@ -1,24 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Symbiotic AI</title>
-  <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      background: #0d0b1f; 
-      color: #e6d6ff; 
-      text-align: center;
-      padding: 40px;
-    }
-    img { width: 260px; margin-top: 40px; }
-    h1 { font-size: 48px; margin-top: 20px; }
-    p { font-size: 20px; opacity: 0.8; }
-  </style>
+<meta charset="UTF-8">
+<title>Symbiotic AI</title>
+
+<!-- Responsive -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL PAGE STYLES ===== */
+body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at 50% 20%, #2b005c, #080011 80%);
+    color: #e8d9ff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Floating neon grid lines */
+.grid-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 110%;
+    height: 110%;
+    background-image: 
+        linear-gradient(rgba(255, 0, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 255, 0.08) 1px, transparent 1px);
+    background-size: 90px 90px;
+    animation: drift 25s linear infinite;
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+@keyframes drift {
+    from { transform: translateY(0px); }
+    to { transform: translateY(300px); }
+}
+
+/* Center wrapper */
+.container {
+    text-align: center;
+    margin-top: 120px;
+    padding: 20px;
+}
+
+/* Logo */
+.logo {
+    width: 240px;
+    filter: drop-shadow(0 0 25px #b400ff);
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 20px #7a00cc); }
+    to   { filter: drop-shadow(0 0 45px #da00ff); }
+}
+
+/* TITLE */
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    margin-top: 25px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 25px #c200ff;
+}
+
+/* SUBTITLE */
+.tagline {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    opacity: 0.85;
+    text-shadow: 0 0 12px #9d4bff;
+}
+
+/* Buttons */
+.btn-wrap {
+    margin-top: 40px;
+}
+
+button {
+    background: linear-gradient(135deg, #8400d4, #c300ff);
+    border: none;
+    padding: 15px 32px;
+    border-radius: 40px;
+    color: white;
+    font-size: 1.1rem;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.25s;
+    box-shadow: 0 0 20px #b400ff88;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 35px #e600ffcc;
+}
+
+/* Neon dividers */
+.section-divider {
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d200ff, transparent);
+    margin: 70px auto;
+    opacity: 0.6;
+}
+
+/* Footer */
+footer {
+    margin-top: 90px;
+    padding-bottom: 30px;
+    font-size: 0.9rem;
+    opacity: 0.5;
+}
+
+</style>
 </head>
+
 <body>
-  <img src="YOUR_LOGO_FILE_PATH" alt="Symbiotic AI Logo">
-  <h1>Symbiotic AI</h1>
-  <p>Cognitive Mathematics, Reasoning & Human-AI Symbiosis.</p>
+
+<div class="grid-lines"></div>
+
+<div class="container">
+    <!-- Replace the src with your GitHub-hosted logo file -->
+    <img class="logo" src="YOUR_LOGO_FILE_PATH" alt="Symbiotic AI Logo">
+
+    <h1>SYMBIOTIC AI</h1>
+
+    <p class="tagline">
+        A Fusion of Mind, Mathematics, and Machine Intelligence
+    </p>
+
+    <div class="btn-wrap">
+        <button onclick="window.location.href='about.html'">About</button>
+        <button onclick="window.location.href='architecture.html'">Architecture</button>
+        <button onclick="window.location.href='research.html'">Research</button>
+        <button onclick="window.location.href='contact.html'">Contact</button>
+        <button onclick="window.location.href='docs/index.html'">Docs</button>
+    </div>
+</div>
+
+<div class="section-divider"></div>
+
+<footer>
+    © 2025 Symbiotic AI — Cognitive Reasoning & Human-AI Symbiosis  
+</footer>
+
 </body>
 </html>
