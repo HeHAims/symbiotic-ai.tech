@@ -1,155 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Symbiotic AI</title>
-
-<!-- Responsive -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Symbiotic AI – Cognitive Intelligence Architecture</title>
 
 <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Montserrat', sans-serif;
+        background: radial-gradient(circle at top, #130025, #020006 70%);
+        color: #e8d9ff;
+        overflow-x: hidden;
+        line-height: 1.6;
+    }
 
-/* ===== GLOBAL PAGE STYLES ===== */
-body {
-    margin: 0;
-    padding: 0;
-    background: radial-gradient(circle at 50% 20%, #2b005c, #080011 80%);
-    color: #e8d9ff;
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-}
+    /* Background Grid */
+    .grid {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.02) 0px,
+            rgba(255,255,255,0.02) 1px,
+            transparent 1px,
+            transparent 40px
+        ),
+        repeating-linear-gradient(
+            to right,
+            rgba(255,255,255,0.015) 0px,
+            rgba(255,255,255,0.015) 1px,
+            transparent 1px,
+            transparent 40px
+        );
+        z-index: 0;
+        pointer-events: none;
+    }
 
-/* Floating neon grid lines */
-.grid-lines {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 110%;
-    height: 110%;
-    background-image: 
-        linear-gradient(rgba(255, 0, 255, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 0, 255, 0.08) 1px, transparent 1px);
-    background-size: 90px 90px;
-    animation: drift 25s linear infinite;
-    pointer-events: none;
-    opacity: 0.25;
-}
+    @keyframes neon {
+        0% { text-shadow: 0 0 12px #b250ff, 0 0 24px #b250ff; }
+        50% { text-shadow: 0 0 24px #d98bff, 0 0 48px #d98bff; }
+        100% { text-shadow: 0 0 12px #b250ff, 0 0 24px #b250ff; }
+    }
 
-@keyframes drift {
-    from { transform: translateY(0px); }
-    to { transform: translateY(300px); }
-}
+    header {
+        text-align: center;
+        padding: 60px 20px 20px;
+        z-index: 2;
+        position: relative;
+    }
 
-/* Center wrapper */
-.container {
-    text-align: center;
-    margin-top: 120px;
-    padding: 20px;
-}
+    h1 {
+        font-size: 48px;
+        animation: neon 4s infinite;
+        margin: 10px 0;
+        font-weight: 700;
+    }
 
-/* Logo */
-.logo {
-    width: 240px;
-    filter: drop-shadow(0 0 25px #b400ff);
-    animation: glow 3s ease-in-out infinite alternate;
-}
+    .tagline {
+        font-size: 20px;
+        max-width: 500px;
+        margin: 0 auto;
+        opacity: 0.85;
+    }
 
-@keyframes glow {
-    from { filter: drop-shadow(0 0 20px #7a00cc); }
-    to   { filter: drop-shadow(0 0 45px #da00ff); }
-}
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        margin-top: 30px;
+    }
 
-/* TITLE */
-h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 3.5rem;
-    margin-top: 25px;
-    letter-spacing: 3px;
-    text-shadow: 0 0 25px #c200ff;
-}
+    nav a {
+        text-decoration: none;
+        color: white;
+        padding: 14px 40px;
+        border-radius: 40px;
+        background: #b026ff;
+        font-size: 18px;
+        font-weight: 500;
+        box-shadow: 0 0 20px #b026ff88;
+        transition: 0.25s;
+    }
 
-/* SUBTITLE */
-.tagline {
-    font-size: 1.2rem;
-    margin-top: 10px;
-    opacity: 0.85;
-    text-shadow: 0 0 12px #9d4bff;
-}
+    nav a:hover {
+        background: #cf5aff;
+        transform: scale(1.05);
+    }
 
-/* Buttons */
-.btn-wrap {
-    margin-top: 40px;
-}
+    .section {
+        max-width: 900px;
+        margin: 70px auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+    }
 
-button {
-    background: linear-gradient(135deg, #8400d4, #c300ff);
-    border: none;
-    padding: 15px 32px;
-    border-radius: 40px;
-    color: white;
-    font-size: 1.1rem;
-    font-family: 'Orbitron', sans-serif;
-    cursor: pointer;
-    margin: 10px;
-    transition: 0.25s;
-    box-shadow: 0 0 20px #b400ff88;
-}
+    .section h2 {
+        font-size: 32px;
+        text-align: center;
+        color: #d5b8ff;
+        margin-bottom: 14px;
+        animation: neon 5s infinite;
+    }
 
-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 35px #e600ffcc;
-}
+    .section p {
+        font-size: 18px;
+        opacity: 0.85;
+        text-align: center;
+    }
 
-/* Neon dividers */
-.section-divider {
-    width: 80%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #d200ff, transparent);
-    margin: 70px auto;
-    opacity: 0.6;
-}
-
-/* Footer */
-footer {
-    margin-top: 90px;
-    padding-bottom: 30px;
-    font-size: 0.9rem;
-    opacity: 0.5;
-}
+    footer {
+        text-align: center;
+        padding: 40px;
+        opacity: 0.65;
+        font-size: 14px;
+    }
 
 </style>
 </head>
-
 <body>
 
-<div class="grid-lines"></div>
+<div class="grid"></div>
 
-<div class="container">
-    <!-- Replace the src with your GitHub-hosted logo file -->
-    <img class="logo" src="03_10_46 PM.png" alt="Symbiotic AI Logo">
-
+<header>
     <h1>SYMBIOTIC AI</h1>
+    <p class="tagline">A Fusion of Mind, Mathematics, and Machine Intelligence</p>
 
-    <p class="tagline">
-        A Fusion of Mind, Mathematics, and Machine Intelligence
+    <nav>
+        <a href="about.html">About</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="research.html">Research</a>
+        <a href="contact.html">Contact</a>
+        <a href="docs/index.html">Docs</a>
+    </nav>
+</header>
+
+<div class="section">
+    <h2>Mission</h2>
+    <p>
+        Symbiotic AI creates cognitive systems that think <em>with</em> humans — integrating 
+        mathematical reasoning, emotional intelligence, symbolic logic, and adaptive learning 
+        into one unified architecture.
     </p>
-
-    <div class="btn-wrap">
-        <button onclick="window.location.href='about.html'">About</button>
-        <button onclick="window.location.href='architecture.html'">Architecture</button>
-        <button onclick="window.location.href='research.html'">Research</button>
-        <button onclick="window.location.href='contact.html'">Contact</button>
-        <button onclick="window.location.href='docs/index.html'">Docs</button>
-    </div>
 </div>
 
-<div class="section-divider"></div>
+<div class="section">
+    <h2>Core Technologies</h2>
+    <p>
+        <strong>CMIS</strong> — Cognitive Mathematical Intelligence System<br>
+        <strong>ULMFI</strong> — Universal Linguistic Multi-Formula Intelligence<br>
+        <strong>SSHAICA</strong> — Emotional-Symbolic Cognition Engine<br>
+        <strong>AND_RES4</strong> — Boolean-Symbolic Fusion Reasoner
+    </p>
+</div>
+
+<div class="section">
+    <h2>NVIDIA Integration</h2>
+    <p>
+        Symbiotic AI leverages NVIDIA GPUs for GRPO training, LoRA optimization, hybrid 
+        symbolic-neural experiments, and large-scale pattern induction pipelines.
+    </p>
+</div>
+
+<div class="section">
+    <h2>Research & Applications</h2>
+    <p>
+        Our systems support STEM learning, AI research, engineering workflows, symbolic 
+        reasoning tasks, and adaptive tutoring environments.
+    </p>
+</div>
 
 <footer>
-    © 2025 Symbiotic AI — Cognitive Reasoning & Human-AI Symbiosis  
+    © 2025 Symbiotic AI LLC — Cognitive Reasoning & Human-AI Symbiosis
 </footer>
 
 </body>
