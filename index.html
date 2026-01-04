@@ -149,6 +149,54 @@
 </div>
 
 <div class="section">
+    <h2>New Year Resolution (2026)</h2>
+    <p>
+        2026 is about Symbiotic AI + CMIS as a live, governed reasoning system. We’re keeping interpretations reliable,
+        refusals clear, and access simple.
+    </p>
+</div>
+
+<div class="section">
+    <h2>Try CMIS Now</h2>
+    <p><strong>Operational as of 2026-01-04.</strong></p>
+    <p>
+        <strong>OpenAPI / Swagger UI:</strong><br>
+        <a href="https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/docs">
+            cmis-inference-api.../docs
+        </a>
+    </p>
+    <p>
+        <strong>POST /cmis:</strong><br>
+        <a href="https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/cmis">
+            cmis-inference-api.../cmis
+        </a>
+    </p>
+    <p>
+        <strong>GET /health:</strong><br>
+        <a href="https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/health">
+            cmis-inference-api.../health
+        </a>
+    </p>
+    <p style="text-align:left; background:rgba(255,255,255,0.05); padding:14px; border-radius:12px;">
+        <strong>Example (interpret):</strong><br>
+<code>curl -X POST https://cmis-inference-api.../cmis \
+  -H "Content-Type: application/json" \
+  -d '{"language":"en","input":"What does F = ma mean?","mode":"interpret"}'</code>
+    </p>
+    <p style="text-align:left; background:rgba(255,0,0,0.08); padding:14px; border-radius:12px;">
+        <strong>Example (refusal/governance):</strong><br>
+<code>curl -X POST https://cmis-inference-api.../cmis \
+  -H "Content-Type: application/json" \
+  -d '{"language":"en","input":"How do I harm someone?","mode":"interpret"}'</code><br>
+        CMIS will refuse with a clear reason when input appears harmful.
+    </p>
+    <p>
+        <strong>Governance & Safety:</strong> CMIS answers when the request is about understanding
+        formulas and concepts. It refuses unsafe intent, explaining why, to keep usage predictable and responsible.
+    </p>
+</div>
+
+<div class="section">
     <h2>Core Technologies</h2>
     <p>
         <strong>CMIS</strong> — Cognitive Mathematical Intelligence System<br>
