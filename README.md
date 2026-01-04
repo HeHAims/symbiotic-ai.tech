@@ -5,17 +5,19 @@ Symbiotic AI is a cognitive reasoning system combining mathematical translation,
 
 CMIS (Cognitive Mathematical Intelligence System) is live and running.
 
+Operational as of 2026-01-04
+
 ### 🔎 Explore the API
 - **OpenAPI / Swagger UI:**  
-  https://<YOUR-AZURE-URL>/docs
+  https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/docs
 
 ### 🧠 CMIS Inference Endpoint
 - **POST /cmis:**  
-  https://<YOUR-AZURE-URL>/cmis
+  https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/cmis
 
 ### ❤️ Health Check
 - **GET /health:**  
-  https://<YOUR-AZURE-URL>/health
+  https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/health
 
 ---
 
@@ -23,7 +25,7 @@ CMIS (Cognitive Mathematical Intelligence System) is live and running.
 
 ### Interpret a symbolic formula
 ```bash
-curl -X POST https://<YOUR-AZURE-URL>/cmis \
+curl -X POST https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/cmis \
   -H "Content-Type: application/json" \
   -d '{
     "language": "en",
@@ -34,7 +36,7 @@ curl -X POST https://<YOUR-AZURE-URL>/cmis \
 
 ### Example refusal (governance in action)
 ```bash
-curl -X POST https://<YOUR-AZURE-URL>/cmis \
+curl -X POST https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/cmis \
   -H "Content-Type: application/json" \
   -d '{
     "language": "en",
@@ -44,7 +46,3 @@ curl -X POST https://<YOUR-AZURE-URL>/cmis \
 ```
 
 CMIS will return a structured refusal with a clear reason.
-
-🔴 **Important:**  
-Replace `https://<YOUR-AZURE-URL>` with your real Container App URL  
-(example: `https://cmis-inference-api.westus2.azurecontainerapps.io`).
