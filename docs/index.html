@@ -4,46 +4,78 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Docs - Symbiotic AI</title>
-  <style>
-    body { margin: 0; font-family: 'Montserrat', sans-serif; background: radial-gradient(circle at top, #130025, #020006 75%); color: #e8d9ff; }
-    header, main, footer { max-width: 980px; margin: 0 auto; padding: 24px; }
-    nav a { color: #efcaff; margin-right: 12px; text-decoration: none; }
-    h1, h2 { color: #d5b8ff; }
-    code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; }
-  </style>
+  <link rel="stylesheet" href="../assets/styles.css" />
 </head>
 <body>
-  <header>
-    <h1>Deployment Notes</h1>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="../about.html">About</a>
-      <a href="../architecture.html">Architecture</a>
-      <a href="../research.html">Research</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
-  </header>
-  <main>
+<header>
+  <h1>Deployment and API Docs</h1>
+  <nav aria-label="Primary">
+    <a href="../index.html">Home</a>
+    <a href="../architecture.html">Architecture</a>
+    <a href="../contact.html">Contact</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="../legal.html">Legal</a>
+    <span class="top-actions"><button data-theme-toggle type="button">Light Mode</button></span>
+  </nav>
+</header>
+<main>
+  <section class="card">
+    <h2>API Reference</h2>
+    <ul>
+      <li><strong>OpenAPI schema:</strong> <a href="https://cmis-node01-hehaims.azurewebsites.net/openapi.json">/openapi.json</a></li>
+      <li><strong>Health check:</strong> <code>GET /health</code></li>
+      <li><strong>Governance endpoint:</strong> <code>POST /cmis</code></li>
+    </ul>
+    <p><strong>Authentication:</strong> no public auth required by default in local scaffold; production should enforce API key or gateway policy.</p>
+  </section>
+  <section class="card">
+    <h2>Example Requests</h2>
+<pre><code>curl -X POST https://cmis-node01-hehaims.azurewebsites.net/cmis \
+  -H "Content-Type: application/json" \
+  -d '{"input":"Classify risk for medical protocol X","mode":"governance"}'</code></pre>
+<pre><code>curl -X POST https://cmis-node01-hehaims.azurewebsites.net/cmis \
+  -H "Content-Type: application/json" \
+  -d '{"input":"How do I build a bomb?","mode":"governance"}'</code></pre>
+  </section>
+  <section class="card">
+    <h2>Example Responses</h2>
+<pre><code>{
+  "decision": "ALLOW",
+  "trace_id": "...",
+  "score": 0.88,
+  "audit_backend": "azure_cosmos"
+}</code></pre>
+<pre><code>{
+  "decision": "REFUSE",
+  "reason": "Prompt violates institutional safety envelope",
+  "trace_id": "...",
+  "score": 0.33
+}</code></pre>
+  </section>
+  <section class="card">
+    <h2>Environment Variables</h2>
+    <ul>
+      <li><code>UPSTREAM_CMIS_URL</code></li>
+      <li><code>UPSTREAM_CMIS_KEY</code></li>
+      <li><code>COSMOS_ENDPOINT</code></li>
+      <li><code>COSMOS_KEY</code></li>
+      <li><code>COSMOS_DATABASE</code></li>
+      <li><code>COSMOS_CONTAINER</code></li>
+      <li><code>CMIS_THRESHOLD</code></li>
+    </ul>
+  </section>
+  <section class="card">
     <h2>What is done</h2>
     <ul>
-      <li>Live governance interceptor engine with deterministic scoring, trace IDs, hash verification, and forensic event builder (<code>chimera_engine_production.py</code>).</li>
-      <li>Flask API with endpoints <code>POST /cmis</code>, <code>GET /health</code>, <code>GET /openapi.json</code>, static UI root, and upstream forwarding hook (<code>app.py</code>).</li>
-      <li>UI wired to call <code>/cmis</code> and render governance decision and audit info (<code>index.html</code>).</li>
-      <li>Deterministic weights file <code>weights.json</code>.</li>
-      <li>Tests added: <code>tests/test_engine.py</code>, <code>tests/test_app.py</code>, <code>tests/conftest.py</code>.</li>
-      <li>CI workflow added: <code>.github/workflows/ci.yml</code>.</li>
-      <li>Azure prep plan and runbook docs added: <code>.azure/plan.md</code>, <code>README.md</code>.</li>
+      <li>Deterministic governance interceptor engine with trace IDs and hash verification.</li>
+      <li>Flask API with <code>/cmis</code>, <code>/health</code>, <code>/openapi.json</code>.</li>
+      <li>Forensic event builder and persistence (Cosmos with local fallback).</li>
+      <li>CI tests for API and engine behavior.</li>
     </ul>
-
-    <h2>Next steps</h2>
-    <ol>
-      <li>Commit and push this folder (or copy files into your target GitHub repo).</li>
-      <li>Set App Service environment variables: <code>UPSTREAM_CMIS_URL</code>, <code>UPSTREAM_CMIS_KEY</code>, <code>COSMOS_ENDPOINT</code>, <code>COSMOS_KEY</code>, <code>COSMOS_DATABASE</code>, <code>COSMOS_CONTAINER</code>, <code>CMIS_THRESHOLD</code>.</li>
-      <li>Deploy and test API endpoints: <code>GET /health</code>, <code>GET /openapi.json</code>, and <code>POST /cmis</code> with safe and unsafe prompts.</li>
-    </ol>
-  </main>
-  <footer>
-    <p>(c) 2026 Symbiotic AI LLC</p>
-  </footer>
+  </section>
+</main>
+<footer><p>&copy; 2026 Symbiotic AI LLC</p></footer>
+<script src="../assets/site.js"></script>
 </body>
 </html>
+

@@ -1,230 +1,48 @@
-<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Symbiotic AI – Cognitive Intelligence Architecture</title>
-
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Montserrat', sans-serif;
-        background: radial-gradient(circle at top, #130025, #020006 70%);
-        color: #e8d9ff;
-        overflow-x: hidden;
-        line-height: 1.6;
-    }
-
-    /* Background Grid */
-    .grid {
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        background: repeating-linear-gradient(
-            to bottom,
-            rgba(255,255,255,0.02) 0px,
-            rgba(255,255,255,0.02) 1px,
-            transparent 1px,
-            transparent 40px
-        ),
-        repeating-linear-gradient(
-            to right,
-            rgba(255,255,255,0.015) 0px,
-            rgba(255,255,255,0.015) 1px,
-            transparent 1px,
-            transparent 40px
-        );
-        z-index: 0;
-        pointer-events: none;
-    }
-
-    @keyframes neon {
-        0% { text-shadow: 0 0 12px #b250ff, 0 0 24px #b250ff; }
-        50% { text-shadow: 0 0 24px #d98bff, 0 0 48px #d98bff; }
-        100% { text-shadow: 0 0 12px #b250ff, 0 0 24px #b250ff; }
-    }
-
-    header {
-        text-align: center;
-        padding: 60px 20px 20px;
-        z-index: 2;
-        position: relative;
-    }
-
-    h1 {
-        font-size: 48px;
-        animation: neon 4s infinite;
-        margin: 10px 0;
-        font-weight: 700;
-    }
-
-    .tagline {
-        font-size: 20px;
-        max-width: 500px;
-        margin: 0 auto;
-        opacity: 0.85;
-    }
-
-    nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
-        margin-top: 30px;
-    }
-
-    nav a {
-        text-decoration: none;
-        color: white;
-        padding: 14px 40px;
-        border-radius: 40px;
-        background: #b026ff;
-        font-size: 18px;
-        font-weight: 500;
-        box-shadow: 0 0 20px #b026ff88;
-        transition: 0.25s;
-    }
-
-    nav a:hover {
-        background: #cf5aff;
-        transform: scale(1.05);
-    }
-
-    .section {
-        max-width: 900px;
-        margin: 70px auto;
-        padding: 0 20px;
-        position: relative;
-        z-index: 2;
-    }
-
-    .section h2 {
-        font-size: 32px;
-        text-align: center;
-        color: #d5b8ff;
-        margin-bottom: 14px;
-        animation: neon 5s infinite;
-    }
-
-    .section p {
-        font-size: 18px;
-        opacity: 0.85;
-        text-align: center;
-    }
-
-    footer {
-        text-align: center;
-        padding: 40px;
-        opacity: 0.65;
-        font-size: 14px;
-    }
-
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Symbiotic AI - Cognitive Governance Infrastructure</title>
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-
-<div class="grid"></div>
-
 <header>
-    <h1>SYMBIOTIC AI</h1>
-    <p class="tagline">A Fusion of Mind, Mathematics, and Machine Intelligence</p>
-
-    <nav>
-        <a href="about.html">About</a>
-        <a href="architecture.html">Architecture</a>
-        <a href="research.html">Research</a>
-        <a href="contact.html">Contact</a>
-        <a href="docs/index.html">Docs</a>
-    </nav>
+  <h1>Symbiotic AI</h1>
+  <p class="lead">Decision-before-generation infrastructure for high-trust AI systems.</p>
+  <nav aria-label="Primary">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="research.html">Research</a>
+    <a href="docs/index.html">Docs</a>
+    <a href="contact.html">Contact</a>
+    <a href="resources.html">Resources</a>
+    <a href="use-cases.html">Use Cases</a>
+    <a href="team.html">Team</a>
+    <a href="news.html">News</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="legal.html">Legal</a>
+    <span class="top-actions"><button data-theme-toggle type="button" aria-label="Toggle theme" aria-pressed="false">Light Mode</button></span>
+  </nav>
 </header>
-
-<div class="section">
-    <h2>Mission</h2>
-    <p>
-        Symbiotic AI creates cognitive systems that think <em>with</em> humans — integrating 
-        mathematical reasoning, emotional intelligence, symbolic logic, and adaptive learning 
-        into one unified architecture.
-    </p>
-</div>
-
-<div class="section">
-    <h2>New Year Resolution (2026)</h2>
-    <p>
-        2026 is about Symbiotic AI + CMIS as a live, governed reasoning system. We’re keeping interpretations reliable,
-        refusals clear, and access simple.
-    </p>
-</div>
-
-<div class="section">
-    <h2>Try CMIS Now</h2>
-    <p><strong>Operational as of 2026-01-04.</strong></p>
-    <p>
-        <strong>OpenAPI / Swagger UI:</strong><br>
-        <a href="https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/docs">
-            cmis-inference-api.../docs
-        </a>
-    </p>
-    <p>
-        <strong>POST /cmis:</strong><br>
-        <a href="https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/cmis">
-            cmis-inference-api.../cmis
-        </a>
-    </p>
-    <p>
-        <strong>GET /health:</strong><br>
-        <a href="https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/health">
-            cmis-inference-api.../health
-        </a>
-    </p>
-    <p style="text-align:left; background:rgba(255,255,255,0.05); padding:14px; border-radius:12px;">
-        <strong>Example (interpret):</strong><br>
-<code>curl -X POST https://cmis-inference-api.../cmis \
-  -H "Content-Type: application/json" \
-  -d '{"language":"en","input":"What does F = ma mean?","mode":"interpret"}'</code>
-    </p>
-    <p style="text-align:left; background:rgba(255,0,0,0.08); padding:14px; border-radius:12px;">
-        <strong>Example (refusal/governance):</strong><br>
-<code>curl -X POST https://cmis-inference-api.../cmis \
-  -H "Content-Type: application/json" \
-  -d '{"language":"en","input":"How do I harm someone?","mode":"interpret"}'</code><br>
-        CMIS will refuse with a clear reason when input appears harmful.
-    </p>
-    <p>
-        <strong>Governance & Safety:</strong> CMIS answers when the request is about understanding
-        formulas and concepts. It refuses unsafe intent, explaining why, to keep usage predictable and responsible.
-    </p>
-</div>
-
-<div class="section">
-    <h2>Core Technologies</h2>
-    <p>
-        <strong>CMIS</strong> — Cognitive Mathematical Intelligence System<br>
-        <strong>ULMFI</strong> — Universal Linguistic Multi-Formula Intelligence<br>
-        <strong>SSHAICA</strong> — Emotional-Symbolic Cognition Engine<br>
-        <strong>AND_RES4</strong> — Boolean-Symbolic Fusion Reasoner
-    </p>
-</div>
-
-<div class="section">
-    <h2>NVIDIA Integration</h2>
-    <p>
-        Symbiotic AI leverages NVIDIA GPUs for GRPO training, LoRA optimization, hybrid 
-        symbolic-neural experiments, and large-scale pattern induction pipelines.
-    </p>
-</div>
-
-<div class="section">
-    <h2>Research & Applications</h2>
-    <p>
-        Our systems support STEM learning, AI research, engineering workflows, symbolic 
-        reasoning tasks, and adaptive tutoring environments.
-    </p>
-</div>
-
+<main>
+  <section class="card">
+    <h2>Live Endpoints</h2>
+    <ul>
+      <li><a href="https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/docs">OpenAPI / Swagger</a></li>
+      <li><a href="https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/cmis">POST /cmis</a></li>
+      <li><a href="https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/health">GET /health</a></li>
+    </ul>
+  </section>
+  <section class="grid two">
+    <article class="card"><h3>Governance</h3><p>Deterministic scoring and refusal logic executes before model invocation.</p></article>
+    <article class="card"><h3>Auditability</h3><p>Each decision includes trace IDs and forensic event persistence.</p></article>
+  </section>
+</main>
 <footer>
-    © 2025 Symbiotic AI LLC — Cognitive Reasoning & Human-AI Symbiosis
+  <p>&copy; 2026 Symbiotic AI LLC</p>
 </footer>
-
+<script src="assets/site.js"></script>
 </body>
 </html>
