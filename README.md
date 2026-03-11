@@ -73,3 +73,12 @@ python ./priorgate_core/engine.py --verify-hash
 curl -X POST https://www.symbiotic-ai.tech/evaluate \
   -H "Content-Type: application/json" \
   -d '{"input":"Classify risk for medical protocol X","mode":"governance"}'
+```
+
+## Node_01 Runtime Package
+- Backend/API implementation is now versioned under `node01/`.
+- Entrypoint: `node01/app.py`
+- Governance engine: `node01/chimera_engine_production.py`
+- OpenAPI path: `GET /openapi.json`
+- Tests: `node01/tests/`
+- CI workflow: `.github/workflows/node01-ci.yml`

@@ -1,0 +1,6 @@
+﻿boto3
+azure-cosmos
+flask
+gunicorn
+requests
+pytest
