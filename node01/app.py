@@ -57,18 +57,39 @@ OPENAPI_DOC: dict[str, Any] = {
 
 def _forward_to_upstream(payload: dict[str, Any]) -> dict[str, Any]:
     upstream_url = os.getenv("UPSTREAM_CMIS_URL")
+    foundry_project_endpoint = os.getenv("FOUNDRY_PROJECT_ENDPOINT", "").strip().rstrip("/")
+    foundry_path = os.getenv("FOUNDRY_PATH", "").strip().lstrip("/")
+
+    if not upstream_url and foundry_project_endpoint:
+        upstream_url = f"{foundry_project_endpoint}/{foundry_path}" if foundry_path else foundry_project_endpoint
+
     if not upstream_url:
         return {
             "message": "Governance ALLOW: upstream endpoint not configured; returning local decision.",
             "upstream": "not_configured",
         }
 
-    headers = {"Content-Type": "application/json"}
-    api_key = os.getenv("UPSTREAM_CMIS_KEY")
-    if api_key:
-        headers["x-api-key"] = api_key
+    is_foundry_project = ".services.ai.azure.com/api/projects/" in upstream_url
 
-    response = requests.post(upstream_url, json=payload, headers=headers, timeout=30)
+    headers = {"Content-Type": "application/json"}
+    api_key = os.getenv("UPSTREAM_CMIS_KEY") or os.getenv("FOUNDRY_API_KEY")
+    if api_key:
+        headers["api-key" if is_foundry_project else "x-api-key"] = api_key
+
+    bearer_token = os.getenv("UPSTREAM_BEARER_TOKEN", "").strip()
+    if bearer_token:
+        headers["Authorization"] = f"Bearer {bearer_token}"
+
+    request_payload = payload
+    foundry_chat_model = os.getenv("FOUNDRY_CHAT_MODEL", "").strip()
+    if is_foundry_project and foundry_chat_model:
+        # Optional payload mapping for Foundry chat routes.
+        request_payload = {
+            "model": foundry_chat_model,
+            "messages": [{"role": "user", "content": payload.get("input", "")}],
+        }
+
+    response = requests.post(upstream_url, json=request_payload, headers=headers, timeout=30)
     response.raise_for_status()
     return response.json() if response.headers.get("content-type", "").startswith("application/json") else {"text": response.text}
 
