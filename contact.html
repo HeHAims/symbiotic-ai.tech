@@ -1,1 +1,199 @@
-﻿<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Contact - Symbiotic AI</title><style>body{margin:0;font-family:Montserrat,Arial,sans-serif;background:#0d1020;color:#ece7ff}header,main,footer{max-width:980px;margin:0 auto;padding:24px}nav a{color:#d7b2ff;margin-right:12px;text-decoration:none}.card{border:1px solid #5d3d8f;border-radius:10px;padding:14px;margin:12px 0;background:rgba(255,255,255,.04)}input,textarea{width:100%;padding:10px;margin:6px 0 12px}</style></head><body><header><h1>Contact Us</h1><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="architecture.html">Architecture</a><a href="research.html">Research</a><a href="docs/index.html">Docs</a></nav></header><main><div class="card"><p>Email: <a href="mailto:info@symbiotic-ai.tech">info@symbiotic-ai.tech</a></p></div><form class="card" id="contactForm" action="https://formspree.io/f/your-form-id" method="POST" novalidate><label>Name</label><input name="name" required><label>Email</label><input type="email" name="email" required><label>Message</label><textarea name="message" rows="5" required></textarea><button type="submit">Submit</button><p id="formMsg"></p></form></main><footer><p>&copy; 2026 Symbiotic AI LLC</p></footer><script>document.getElementById('contactForm').addEventListener('submit',async function(e){e.preventDefault();const msg=document.getElementById('formMsg');if(this.action.includes('your-form-id')){msg.textContent='Form endpoint not configured yet.';return;}const res=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});msg.textContent=res.ok?'Message sent.':'Submission failed.';if(res.ok)this.reset();});</script></body></html>
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Symbiotic AI Node-01</title>
+  <style>
+    :root {
+      --bg: #0b0f1d;
+      --card: rgba(255,255,255,0.05);
+      --border: rgba(168,123,255,0.45);
+      --text: #ece6ff;
+      --muted: #c8bcf0;
+      --accent: #d4a9ff;
+      --button: #7e22ce;
+      --button-hover: #9333ea;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Montserrat, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, #1a1331, var(--bg) 72%);
+      line-height: 1.6;
+    }
+    header, main, footer {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+    .lead {
+      color: var(--muted);
+      max-width: 780px;
+    }
+    .contact-form-wrapper {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 2fr 1fr;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .contact-form-wrapper { grid-template-columns: 1fr; }
+    }
+    form, .direct-contact {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .form-section { margin-bottom: 14px; }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--accent);
+    }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: rgba(10,10,20,0.7);
+      color: var(--text);
+    }
+    textarea { min-height: 140px; resize: vertical; }
+    .dispatch-button {
+      background: var(--button);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .dispatch-button:hover { background: var(--button-hover); }
+    .small {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .status {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .direct-contact p { margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Contact Symbiotic AI</h1>
+    <p class="lead">Node-01 governance and integration intake. Use institutional email for audit, beta, and partnership requests.</p>
+    <nav aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="research.html">Research</a>
+      <a href="docs/index.html">Docs</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="contact-form-wrapper">
+      <form id="node01Form" action="https://formspree.io/f/xqeylewe" method="POST">
+        <input type="hidden" name="_subject" value="New Inquiry: Symbiotic AI Node-01" />
+        <input type="hidden" name="admin_contact" value="hilarionhernandez@symbiotic-ai.tech" />
+        <input type="hidden" name="admin_phone" value="7023764436" />
+
+        <div class="form-section">
+          <label for="email">Institutional Email</label>
+          <input type="email" name="email" id="email" required placeholder="name@organization.com" />
+        </div>
+
+        <div class="form-section">
+          <label for="category">Governance Category</label>
+          <select name="category" id="category">
+            <option value="Audit">Forensic Audit Request</option>
+            <option value="Access">Beta Access (Node-01)</option>
+            <option value="Partnership">Institutional Partnership</option>
+          </select>
+        </div>
+
+        <div class="form-section">
+          <label for="message">Secure Message</label>
+          <textarea name="message" id="message" required placeholder="Describe your governance or integration requirements..."></textarea>
+        </div>
+
+        <input type="text" name="_gotcha" style="display:none" />
+
+        <button type="submit" class="dispatch-button">Dispatch to Node-01</button>
+        <p class="small">By submitting, you consent to contact for governance and integration follow-up.</p>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="direct-contact">
+        <h2>Direct Contact</h2>
+        <p>Direct: <a href="tel:+17023764436">702-376-4436</a></p>
+        <p>Email: <a href="mailto:hilarionhernandez@symbiotic-ai.tech">hilarionhernandez@symbiotic-ai.tech</a></p>
+        <p class="small">For urgent institutional matters, include organization name and timeline in your message.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Symbiotic AI LLC</p>
+  </footer>
+
+  <script>
+    document.getElementById('node01Form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const status = document.getElementById('status');
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if (!email || !email.includes('@')) {
+        status.textContent = 'Please enter a valid institutional email.';
+        return;
+      }
+      if (message.length < 20) {
+        status.textContent = 'Please provide more detail (minimum 20 characters).';
+        return;
+      }
+
+      status.textContent = 'Dispatching message...';
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          form.reset();
+          status.textContent = 'Message dispatched successfully. Node-01 team will follow up.';
+        } else {
+          status.textContent = 'Dispatch failed. Please retry or email directly.';
+        }
+      } catch {
+        status.textContent = 'Network error. Please retry or email directly.';
+      }
+    });
+  </script>
+</body>
+</html>
