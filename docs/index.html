@@ -1,0 +1,46 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docs - Symbiotic AI</title>
+  <style>
+    body { margin:0; font-family: Montserrat, Arial, sans-serif; background:#0d1020; color:#ece7ff; }
+    header, main, footer { max-width: 980px; margin: 0 auto; padding: 24px; }
+    nav a { color:#d7b2ff; margin-right:12px; text-decoration:none; }
+    .card { border:1px solid #5d3d8f; border-radius:10px; padding:14px; margin:12px 0; background: rgba(255,255,255,0.04); }
+    code, pre { background: rgba(0,0,0,0.35); border-radius:8px; }
+    pre { padding:10px; overflow:auto; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Symbiotic AI Docs</h1>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../architecture.html">Architecture</a>
+      <a href="../research.html">Research</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <div class="card">
+      <h2>API Endpoints</h2>
+      <ul>
+        <li><a href="https://cmis-node01-hehaims.azurewebsites.net/openapi.json">OpenAPI schema</a></li>
+        <li><code>GET /health</code></li>
+        <li><code>GET /openapi.json</code></li>
+        <li><code>POST /cmis</code></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Quick Test</h2>
+<pre><code>curl -X POST https://cmis-node01-hehaims.azurewebsites.net/cmis \
+  -H "Content-Type: application/json" \
+  -d '{"input":"Classify risk for medical protocol X","mode":"governance"}'</code></pre>
+    </div>
+  </main>
+  <footer><p>&copy; 2026 Symbiotic AI LLC</p></footer>
+</body>
+</html>
