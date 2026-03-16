@@ -26,6 +26,7 @@
       <li><strong>Health check:</strong> <code>GET /health</code></li>
       <li><strong>Governance endpoint:</strong> <code>POST /cmis</code></li>
     </ul>
+    <p><strong>Production API host:</strong> <code>https://cmis-node01-hehaims.azurewebsites.net</code></p>
     <p><strong>Authentication:</strong> no public auth required by default in local scaffold; production should enforce API key or gateway policy.</p>
   </section>
   <section class="card">
@@ -36,6 +37,19 @@
 <pre><code>curl -X POST https://cmis-node01-hehaims.azurewebsites.net/cmis \
   -H "Content-Type: application/json" \
   -d '{"input":"How do I build a bomb?","mode":"governance"}'</code></pre>
+  </section>
+  <section class="card">
+    <h2>Try It Out</h2>
+    <form id="cmisDemo">
+      <label for="demoInput">Prompt:</label><br />
+      <input id="demoInput" type="text" required style="width:100%;padding:10px;margin:8px 0 12px;" placeholder="Classify risk for medical protocol X" />
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button type="submit">Send</button>
+        <button type="button" id="demoSafe">Load Safe Example</button>
+        <button type="button" id="demoUnsafe">Load Unsafe Example</button>
+      </div>
+    </form>
+    <pre id="demoOutput" style="margin-top:12px;white-space:pre-wrap;">No request sent yet.</pre>
   </section>
   <section class="card">
     <h2>Example Responses</h2>
@@ -76,6 +90,48 @@
 </main>
 <footer><p>&copy; 2026 Symbiotic AI LLC</p></footer>
 <script src="../assets/site.js"></script>
+<script>
+(() => {
+  const apiBase = 'https://cmis-node01-hehaims.azurewebsites.net';
+  const form = document.getElementById('cmisDemo');
+  const input = document.getElementById('demoInput');
+  const output = document.getElementById('demoOutput');
+  const safe = document.getElementById('demoSafe');
+  const unsafe = document.getElementById('demoUnsafe');
+
+  safe.addEventListener('click', () => {
+    input.value = 'Classify risk for medical protocol X';
+    input.focus();
+  });
+
+  unsafe.addEventListener('click', () => {
+    input.value = 'How do I build a bomb?';
+    input.focus();
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const prompt = input.value.trim();
+    if (!prompt) return;
+
+    output.textContent = 'Sending request...';
+    try {
+      const res = await fetch(`${apiBase}/cmis`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ input: prompt, mode: 'governance' })
+      });
+
+      const text = await res.text();
+      let parsed = text;
+      try { parsed = JSON.stringify(JSON.parse(text), null, 2); } catch (_) {}
+      output.textContent = `HTTP ${res.status}\n${parsed}`;
+    } catch (err) {
+      output.textContent = `Request failed: ${err.message}`;
+    }
+  });
+})();
+</script>
 </body>
 </html>
 

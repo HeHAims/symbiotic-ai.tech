@@ -1,0 +1,26 @@
+# Python caches and test caches
+__pycache__/
+.pytest_cache/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Local environment and secrets
+.env
+.env.*
+
+# Logs and temporary files
+*.log
+*.tmp
+logs/
+tmp/
+
+# Generated evidence artifacts
+node01/evidence_reports/*.json
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/

@@ -23,9 +23,9 @@ Symbiotic AI is not a chatbot. It is a deterministic governance envelope that in
   - `flask`/`gunicorn` (API delivery)
 
 ## API Surface
-- OpenAPI / Swagger: `https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/docs`
-- CMIS Endpoint: `POST https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/cmis`
-- Health Endpoint: `GET https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/health`
+- OpenAPI schema: `https://cmis-node01-hehaims.azurewebsites.net/openapi.json`
+- CMIS Endpoint: `POST https://cmis-node01-hehaims.azurewebsites.net/cmis`
+- Health Endpoint: `GET https://cmis-node01-hehaims.azurewebsites.net/health`
 
 ## Validation and Evidence (CGB-1)
 As of the February 2, 2026 evidence run:
@@ -45,7 +45,7 @@ As of the February 2, 2026 evidence run:
 | Resource | Purpose | Source / Link |
 |---|---|---|
 | Main Web Portal | Public interface | `https://symbiotic-ai.tech` |
-| API Documentation | Swagger / OpenAPI | `https://cmis-inference-api.livelybay-7d013563.westus2.azurecontainerapps.io/docs` |
+| API Documentation | OpenAPI schema | `https://cmis-node01-hehaims.azurewebsites.net/openapi.json` |
 | Benchmark Hub | Reproducible proof | Kaggle: CMIS-Decision Task |
 | Governance Brief | Institutional PDF | February 2, 2026 brief |
 | Nova Council Node | Multi-perspective reasoning engine | `https://github.com/HeHAims/Amazon_Nova_AI_Hackathon` |
