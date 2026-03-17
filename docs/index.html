@@ -49,7 +49,7 @@
         <button type="button" id="demoUnsafe">Load Unsafe Example</button>
       </div>
     </form>
-    <pre id="demoOutput" style="margin-top:12px;white-space:pre-wrap;">No request sent yet.</pre>
+    <div id="demoOutput" style="margin-top:12px;">No request sent yet.</div>
   </section>
   <section class="card">
     <h2>Example Responses</h2>
@@ -109,12 +109,51 @@
     input.focus();
   });
 
+  function renderResult(status, data) {
+    const isAllow = data && data.decision === 'ALLOW';
+    const isRefuse = data && data.decision === 'REFUSE';
+    const decisionColor = isAllow ? '#2e7d32' : isRefuse ? '#b71c1c' : '#555';
+    const decisionLabel = isAllow ? '✅ ALLOW' : isRefuse ? '🚫 REFUSE' : data && data.decision ? data.decision : '—';
+
+    let modelAnswer = '';
+    if (isAllow && data.model_response) {
+      const mr = data.model_response;
+      // responses API shape: output[0].content[0].text or choices[0].message.content
+      try {
+        if (mr.output && mr.output[0] && mr.output[0].content) {
+          modelAnswer = mr.output[0].content[0].text || mr.output[0].content;
+        } else if (mr.choices && mr.choices[0]) {
+          modelAnswer = mr.choices[0].message && mr.choices[0].message.content
+            ? mr.choices[0].message.content
+            : mr.choices[0].text || '';
+        }
+      } catch (_) {}
+    }
+
+    const traceId = (data && (data.trace_id || data.audit_location || '')).toString().split('/').pop() || '—';
+    const score = data && data.score != null ? data.score.toFixed(4) : '—';
+    const reason = data && data.reason ? data.reason : '';
+
+    const raw = JSON.stringify(data, null, 2);
+    output.innerHTML = `
+      <div style="border-left:4px solid ${decisionColor};padding:10px 14px;background:#fafafa;border-radius:4px;font-family:sans-serif;">
+        <p style="margin:0 0 6px;font-size:1.1em;font-weight:700;color:${decisionColor};">${decisionLabel}</p>
+        ${reason ? `<p style="margin:0 0 4px;color:#b71c1c;font-size:.9em;">${reason}</p>` : ''}
+        ${modelAnswer ? `<p style="margin:0 0 6px;font-size:.95em;color:#222;white-space:pre-wrap;">${modelAnswer}</p>` : ''}
+        <p style="margin:0;font-size:.8em;color:#777;">Score: <code>${score}</code> &nbsp;|&nbsp; Trace: <code>${traceId}</code> &nbsp;|&nbsp; HTTP ${status}</p>
+      </div>
+      <details style="margin-top:8px;font-size:.8em;">
+        <summary style="cursor:pointer;color:#555;">Raw JSON</summary>
+        <pre style="white-space:pre-wrap;background:#f5f5f5;padding:8px;border-radius:4px;overflow-x:auto;">${raw}</pre>
+      </details>`;
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const prompt = input.value.trim();
     if (!prompt) return;
 
-    output.textContent = 'Sending request...';
+    output.innerHTML = '<p style="color:#555;font-style:italic;">Sending request…</p>';
     try {
       const res = await fetch(`${apiBase}/cmis`, {
         method: 'POST',
@@ -123,11 +162,16 @@
       });
 
       const text = await res.text();
-      let parsed = text;
-      try { parsed = JSON.stringify(JSON.parse(text), null, 2); } catch (_) {}
-      output.textContent = `HTTP ${res.status}\n${parsed}`;
+      let parsed = null;
+      try { parsed = JSON.parse(text); } catch (_) {}
+
+      if (parsed) {
+        renderResult(res.status, parsed);
+      } else {
+        output.innerHTML = `<pre style="white-space:pre-wrap;">HTTP ${res.status}\n${text}</pre>`;
+      }
     } catch (err) {
-      output.textContent = `Request failed: ${err.message}`;
+      output.innerHTML = `<p style="color:#b71c1c;">Request failed: ${err.message}</p>`;
     }
   });
 })();
